@@ -1,0 +1,69 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.employee._id ? 'Edit Employee' : 'New Employee'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.employeeForm" class="form-horizontal" ng-submit="vm.save(vm.form.employeeForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="firstName">Employee First Name</label>
+          <input name="name" type="text" ng-model="vm.employee.firstName" id="firstName" class="form-control" placeholder="First Name" required>
+          <div ng-messages="vm.form.employeeForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Employee first name is required.</p>
+          </div>
+
+          <label class="control-label" for="name">Employee Last Name</label>
+          <input name="name" type="text" ng-model="vm.employee.lastName" id="lastName" class="form-control" placeholder="Last Name" required>
+          <div ng-messages="vm.form.employeeForm.lastName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Employee last name is required.</p>
+          </div>
+
+          <label class="control-label" for="name">Employee Address</label>
+          <input name="name" type="text" ng-model="vm.employee.address" id="address" class="form-control" placeholder="Address" required>
+          <div ng-messages="vm.form.employeeForm.address.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Employee address is required.</p>
+          </div>
+
+          <label class="control-label" for="name">Employee Phone Number</label>
+          <input name="name" type="text" ng-model="vm.employee.phoneNum" id="phoneNum" class="form-control" placeholder="Phone Number" required>
+          <div ng-messages="vm.form.employeeForm.phoneNum.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Employee phone number is required.</p>
+          </div>
+
+          <label class="control-label" for="name">Employee Email</label>
+          <input name="name" type="text" ng-model="vm.employee.email" id="email" class="form-control" placeholder="Email" required>
+          <div ng-messages="vm.form.employeeForm.email.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Employee email is required.</p>
+          </div>
+
+          <label class="control-label" for="name">Employee Hire Date</label>
+          <input name="name" type="date" ng-model="vm.employee.dateHired" id="dateHired" class="form-control" placeholder="Hire Date" required>
+          <div ng-messages="vm.form.employeeForm.dateHired.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Employee hire date is required.</p>
+          </div>
+
+          <label class="control-label" for="name">Employee Department</label>
+          <input name="name" type="text" ng-model="vm.employee.department" id="department" class="form-control" placeholder="Department" required>
+          <div ng-messages="vm.form.employeeForm.department.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Employee name is required.</p>
+          </div>
+
+            <label class="control-label" for="name">Employee Date of Birth</label>
+          <input name="name" type="date" ng-model="vm.employee.dob" id="department" class="form-control" placeholder="Date of Birth" required>
+          <div ng-messages="vm.form.employeeForm.dob.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Employee birth date is required.</p>
+          </div>
+        </div>
+        
+       
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.employee._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.employee.firstName}} {{vm.employee.lastName}}</h1>
+  </div>
+  <div class="pull-right"
+       data-ng-show="vm.employee.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       data-ui-sref="employees.edit({ employeeId: vm.employee._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span data-ng-bind="vm.employee.created | date:'mediumDate'"></span>
+      by
+      <span data-ng-if="vm.employee.user"
+            data-ng-bind="vm.employee.user.displayName"></span>
+      <span data-ng-if="!vm.employee.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" data-ng-bind="vm.employee.content"></p>
+  <p>{{vm.employee.firstName}} {{vm.employee.lastName}}</p>
+  <p>{{vm.employee.address}}</p>
+  <a href="mailto:{{vm.employee.email}}"><p>{{vm.employee.email}}</p></a>
+  <p>{{vm.employee.phoneNumber}}</p>
+  <p>Date Hired: {{vm.employee.dateHired | date:'mediumDate'}}</p>
+  <p>Birthday: {{vm.employee.dob | date: 'mediumDate'}}</p>
+  <p>Department: {{vm.employee.department}}</p>
+</section>
