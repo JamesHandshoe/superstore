@@ -6,9 +6,9 @@
     .module('departments')
     .controller('DepartmentsController', DepartmentsController);
 
-  DepartmentsController.$inject = ['$scope', '$state', 'Authentication', 'departmentResolve'];
+  DepartmentsController.$inject = ['$scope', '$state', 'Authentication', 'departmentResolve', '$resource', 'EmployeesService', 'ProductsService'];
 
-  function DepartmentsController ($scope, $state, Authentication, department) {
+  function DepartmentsController ($scope, $state, Authentication, department, $resource, EmployeesService, ProductsService) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -17,6 +17,9 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+
+    vm.products = ProductsService.query();
+    vm.employees = EmployeesService.query();
 
     // Remove existing Department
     function remove() {
@@ -47,6 +50,15 @@
 
       function errorCallback(res) {
         vm.error = res.data.message;
+      }
+    }
+    
+    function updateDepartmentProducts() {
+      var len = vm.products.length;
+      for(var i=0; i<len; i++) {
+        if(vm.products[i].department === 'Dairy'){
+          department.products[i].push(vm.products[i].name);
+        }
       }
     }
   }

@@ -6,9 +6,9 @@
     .module('products')
     .controller('ProductsController', ProductsController);
 
-  ProductsController.$inject = ['$scope', '$state', 'Authentication', 'productResolve'];
+  ProductsController.$inject = ['$scope', '$state', 'Authentication', 'productResolve', '$resource', 'DepartmentsService'];
 
-  function ProductsController ($scope, $state, Authentication, product) {
+  function ProductsController ($scope, $state, Authentication, product, $resource, DepartmentsService) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -17,6 +17,8 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+
+    vm.department = DepartmentsService.query();
 
     // Remove existing Product
     function remove() {

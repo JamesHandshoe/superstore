@@ -6,9 +6,9 @@
     .module('employees')
     .controller('EmployeesController', EmployeesController);
 
-  EmployeesController.$inject = ['$scope', '$state', 'Authentication', 'employeeResolve'];
+  EmployeesController.$inject = ['$scope', '$state', 'Authentication', 'employeeResolve', '$resource', 'DepartmentsService'];
 
-  function EmployeesController ($scope, $state, Authentication, employee) {
+  function EmployeesController ($scope, $state, Authentication, employee, $resource, DepartmentsService) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -17,7 +17,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
-
+    vm.department = DepartmentsService.query();
     // Remove existing Employee
     function remove() {
       if (confirm('Are you sure you want to delete?')) {
