@@ -13,42 +13,42 @@ var CustomerSchema = new Schema({
   firstName: {
     type: String,
     default: '',
-    required: "Please fill out customer's first name",
+    required: 'Please fill out customer first name',
     trim: true
   },
 
   lastName: {
     type: String,
     default: '',
-    required: "Please fill out customer's last name",
+    required: 'Please fill out customer last name',
     trim: true
   },
 
   address: {
     type: String,
     default: '',
-    required: "Please fill out customer address",
+    required: 'Please fill out customer address',
     trim: true
   },
 
   phoneNum: {
     type: String,
     default: '',
-    required: "Please fill out customer phone number",
+    required: 'Please fill out customer phone number',
     trim: true
   },
 
   email: {
     type: String,
     default: '',
-    required: "Please fill out customer email",
+    required: 'Please fill out customer email',
     trim: true
   },
 
   dob: {
-    type: String,
-    default: '',
-    required: "Please fill out customer DOB",
+    type: Date,
+    default: Date.now,
+    required: 'Please fill out customer first name',
     trim: true
   },
 

@@ -3,7 +3,12 @@
     <h1>Customers</h1>
   </div>
   <div class="list-group">
-    <a data-ng-repeat="customer in vm.customers"
+   <button class="btn btn-primary" ng-click="order = 'lastName'">Order by Name</button>
+    <button class = "btn btn-primary" ng-click="order = 'created'">Order by Last Store Purchase</button>
+    <button class="btn btn-primary" ng-click="order = 'dob'">Order by Birthday</button>
+    <br>
+    <br>
+    <a data-ng-repeat="customer in vm.customers | orderBy: order | filter: search"
        data-ui-sref="customers.view({ customerId: customer._id })"
        class="list-group-item">
       <small class="list-group-item-text">
@@ -14,7 +19,8 @@
         <span data-ng-if="!customer.user">Deleted User</span>
       </small>
       <h4 class="list-group-item-heading" data-ng-model="customer">{{customer.firstName}}  {{customer.lastName}}</h4>
-      <h5 class="list-group-item-heading" data-ng-model="customer">Last store purchase: {{customer.created | date:"medium"}}</h5>
+      <h5 class="list-group-item-heading" data-ng-model="customer">Last store purchase: {{customer.created | date:"mediumDate"}}</h5>
+      <h5 class="list-group-item-heading" data-ng-model="customer">Customer Birthday: {{customer.dob | date:"mediumDate"}}</h5>
     </a>
   </div>
   <div class="alert alert-warning text-center" data-ng-if="vm.customers.$resolved && !vm.customers.length">

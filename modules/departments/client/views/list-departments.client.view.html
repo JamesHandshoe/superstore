@@ -3,7 +3,10 @@
     <h1>Departments</h1>
   </div>
   <div class="list-group">
-    <a data-ng-repeat="department in vm.departments"
+    <button class="btn btn-primary" ng-click="order = 'name'">Order by Department Name</button>
+    <br>
+    <br>
+    <a data-ng-repeat="department in vm.departments | orderBy: order | filter: search"
        data-ui-sref="departments.view({ departmentId: department._id })"
        class="list-group-item">
       <small class="list-group-item-text">

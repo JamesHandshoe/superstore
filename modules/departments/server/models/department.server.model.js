@@ -17,10 +17,10 @@ var DepartmentSchema = new Schema({
     trim: true
   },
   description:{
-      type: String,
-      default: '',
-      required: 'Please provide a department description',
-      trim: true
+    type: String,
+    default: '',
+    required: 'Please provide a department description',
+    trim: true
   },
   sales: {
     type: Array,
