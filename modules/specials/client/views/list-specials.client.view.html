@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Specials</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="special in vm.specials"
+       ui-sref="specials.view({ specialId: special._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="special.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="special.user" ng-bind="special.user.displayName"></span>
+        <span ng-if="!special.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="special.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.specials.$resolved && !vm.specials.length">
+    No Specials yet, why don't you <a ui-sref="specials.create">create one</a>?
+  </div>
+</section>

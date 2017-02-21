@@ -56,6 +56,10 @@ var ProductSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  productImageURL: {
+    type: String,
+    default: 'modules/users/client/img/profile/default.png'
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

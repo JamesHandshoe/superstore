@@ -6,11 +6,16 @@
     .module('products')
     .controller('ProductsController', ProductsController);
 
-  ProductsController.$inject = ['$scope', '$state', 'Authentication', 'productResolve', '$resource', 'DepartmentsService'];
+  ProductsController.$inject = ['$scope', '$state', 'Authentication', 'productResolve', '$resource', 'DepartmentsService', 'FileUploader'];
 
-  function ProductsController ($scope, $state, Authentication, product, $resource, DepartmentsService) {
+  function ProductsController ($scope, $state, Authentication, product, $resource, DepartmentsService, FileUploader) {
     var vm = this;
 
+    /**Image Stuff**/
+
+    
+
+    /**End Image Stuff**/
     vm.authentication = Authentication;
     vm.product = product;
     vm.error = null;
