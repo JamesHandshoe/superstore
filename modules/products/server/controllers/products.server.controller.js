@@ -4,8 +4,10 @@
  * Module dependencies.
  */
 var path = require('path'),
+  fs = require('fs'),
   mongoose = require('mongoose'),
   Product = mongoose.model('Product'),
+  User = mongoose.model('User'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -114,4 +116,47 @@ exports.productByID = function(req, res, next, id) {
     req.product = product;
     next();
   });
+};
+
+//Step 3: create and export a function to handle the uploads - also need to add uploads
+//in img folder
+//This is a huge function with many concepts that are difficult - get it added but look at it and
+//pull it apart.
+exports.changeProductPicture = function(req, res) {
+
+  var user = req.user;
+  var message = null;
+
+  if (user) {
+    fs.writeFile('./modules/products/client/img/uploads/' + req.files.file.name, req.files.file.buffer, function(uploadError) {
+      if (uploadError) {
+        return res.status(400).send({
+          message: 'Error occurred during image upload'
+        });
+      } else {
+        user.imageURL = './modules/products/client/img/uploads/' + req.files.file.name;
+
+        user.save(function (saveError) {
+          if (saveError) {
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(saveError)
+            });
+          } else {
+            req.login(user, function (err) {
+              if (err) {
+                res.status(400).send(err);
+              } else {
+                res.json(user);
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    res.status(400).send({
+      message: 'User is not signed in'
+    });
+  }
+
 };

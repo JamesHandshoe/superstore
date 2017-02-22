@@ -56,6 +56,7 @@ var ProductSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  //Step 2: We need to update the model to reflect this change.
   productImageURL: {
     type: String,
     default: 'modules/users/client/img/profile/default.png'

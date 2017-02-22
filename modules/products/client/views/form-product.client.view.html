@@ -63,22 +63,58 @@
 </section>
 
 <section>
-    <div class="form-group text-center">
-      <img ng-src="{{imageURL}}" alt="{{user.displayName}}" class="img-thumbnail user-profile-picture">
+
+  <!-- uploadImage Box Start-->
+  <!--You will need to alter your view to accept all the changes for image uploading-->
+  <div class="col-md-12">
+
+
+      <div class="manual-upload" ng-show="urlimage.length === undefined">
+        <label class="control-label" for="urlimage">Product Image Upload</label>
+
+        <div class="form-group controls">
+                <span class="btn btn-default btn-file">
+                    Select Image <input type="file" nv-file-select uploader="uploaderProductImage">
+                </span>
+        </div>
+
+        <br>
+<!-- 
+        <div class="text-center form-group-coffee" ng-show="uploaderProductImage.queue.length">
+
+          <button class="btn btn-primary" ng-click="uploadProductPicture();">Upload</button>
+          <button class="btn btn-default" ng-click="cancelProductUpload();">Delete</button>
+
+        </div> -->
+
+        <div ng-show="success" class="text-center text-success">
+
+          <strong>Upload Successful</strong>
+        </div>
+
+        <!--<div ng-show="error" class="text-center text-danger">-->
+        <!--<strong ng-bind="error"></strong>-->
+        <!--</div>-->
+
+      </div>
+
+      <div class="add-image-link" ng-hide="success">
+
+        <label class="control-label" for="urlimage" ng-hide="uploaderProduct.queue.length">IMAGE
+          URL</label>
+
+        <div class="controls" ng-hide="uploaderProduct.queue.length">
+          <input type="url" data-ng-model="urlimage" id="urlimage" class="form-control"
+                 required>
+          <div class="sub-label">Manually enter an image URL.</div>
+
+        </div>
+      </div>
+
+    
+
+    <div class="col-md-5 create-deal-image-preview"></br></br>
+      <img ng-src="{{vm.productImageURL}}" class="img-thumbnail product-upload-picture">
     </div>
-    <div class="text-center form-group" ng-hide="uploader.queue.length">
-      <span class="btn btn-default btn-file">
-          Select Image <input type="file" nv-file-select uploader="uploader">
-      </span>
-    </div>
-    <div class="text-center form-group" ng-show="uploader.queue.length">
-      <button class="btn btn-primary" ng-click="uploadProfilePicture();">Upload</button>
-      <button class="btn btn-default" ng-click="cancelUpload();">Cancel</button>
-    </div>
-    <div ng-show="success" class="text-center text-success">
-      <strong>Profile Picture Changed Successfully</strong>
-    </div>
-    <div ng-show="error" class="text-center text-danger">
-      <strong ng-bind="error"></strong>
-    </div>
+  </div>
 </section>
